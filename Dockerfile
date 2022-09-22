@@ -2,7 +2,7 @@ FROM alpine:latest
 
 ARG user
 # Create a group and user
-RUN addgroup -S appgroup && adduser -G $appgroup -S $user
+RUN addgroup -S appgroup && adduser -G appgroup -S $user
 
 # Tell docker that all future commands should run as the appuser user
 USER $user
