@@ -5,6 +5,9 @@ branding:
   icon: 'terminal'
   color: 'yellow'
 inputs:
+  user:
+    description: 'User to run the stack under'
+    default: 'root'
   cdk_stack:
     description: 'AWS CDK stack name to execute.'
     default: '*'
@@ -32,3 +35,5 @@ outputs:
 runs:
   using: 'docker'
   image: './Dockerfile'
+  args:
+    - ${{ inputs.user }}
