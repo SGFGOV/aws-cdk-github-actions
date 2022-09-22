@@ -1,5 +1,12 @@
 FROM alpine:latest
 
+ARG user
+# Create a group and user
+RUN addgroup -S appgroup && adduser -S $user -G $user
+
+# Tell docker that all future commands should run as the appuser user
+USER $user
+
 RUN apk --update --no-cache add nodejs npm python3 py3-pip jq curl bash git docker && \
 	ln -sf /usr/bin/python3 /usr/bin/python
 
